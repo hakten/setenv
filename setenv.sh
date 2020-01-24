@@ -1,6 +1,9 @@
 #!/bin/bash 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 701e45451f0e28606984d17d828129a4d13d737e
 DIR=$(pwd) 
 DATAFILE="$DIR/$1" 
 
@@ -13,8 +16,11 @@ then
    return 0
 fi
 
+<<<<<<< HEAD
 =======
 >>>>>>> remotes/origin/version/2
+=======
+>>>>>>> 701e45451f0e28606984d17d828129a4d13d737e
 echo $0 
 if [ "$0" = "$BASH_SOURCE" ] 
 then 
@@ -23,6 +29,7 @@ then
    return 1 
 fi 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 if [ -z "$1" ] 
@@ -33,6 +40,8 @@ then
 fi 
 
 >>>>>>> remotes/origin/version/2
+=======
+>>>>>>> 701e45451f0e28606984d17d828129a4d13d737e
 
 # Get directory we are running from 
 
@@ -137,7 +146,11 @@ EOF
 cat backend.tf 
 rm -rf .terraform/terraform.tfstate
 <<<<<<< HEAD
+<<<<<<< HEAD
 terraform init
 =======
 terraform init
 >>>>>>> remotes/origin/version/2
+=======
+terraform init
+>>>>>>> 701e45451f0e28606984d17d828129a4d13d737e
