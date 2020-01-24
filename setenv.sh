@@ -1,5 +1,6 @@
 #!/bin/bash 
 
+<<<<<<< HEAD
 DIR=$(pwd) 
 DATAFILE="$DIR/$1" 
 
@@ -12,6 +13,8 @@ then
    return 0
 fi
 
+=======
+>>>>>>> remotes/origin/version/2
 echo $0 
 if [ "$0" = "$BASH_SOURCE" ] 
 then 
@@ -20,6 +23,16 @@ then
    return 1 
 fi 
 
+<<<<<<< HEAD
+=======
+if [ -z "$1" ] 
+then 
+   echo "setenv: You must provide the name of the configuration file." 
+   echo "e.g. source ./setenv environments/data-rnd-us-vet1-v1" 
+   return 1 
+fi 
+
+>>>>>>> remotes/origin/version/2
 
 # Get directory we are running from 
 
@@ -123,4 +136,8 @@ EOF
 
 cat backend.tf 
 rm -rf .terraform/terraform.tfstate
+<<<<<<< HEAD
 terraform init
+=======
+terraform init
+>>>>>>> remotes/origin/version/2
