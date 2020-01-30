@@ -4,23 +4,14 @@ echo $0
 if [ "$0" = "$BASH_SOURCE" ] 
 then 
    echo "$0: Please source this file." 
-   echo "e.g. source ./setenv environments/data-rnd-us-vet1-v1" 
+   echo "e.g. source ./setenv configurations/data-rnd-us-vet1-v1" 
    return 1 
 fi 
-
-# if [ -z "$1" ] 
-# then 
-#    echo "terraform { " > backend.tf 
-#    echo "backend \"s3\" {}" >> backend.tf
-#    echo "}" >> backend.tf
-#    cat backend.tf
-#    return 0
-# fi
 
 if [ -z "$1" ] 
 then 
    echo "setenv: You must provide the name of the configuration file." 
-   echo "e.g. source ./setenv environments/data-rnd-us-vet1-v1" 
+   echo "e.g. source ./setenv configurations/data-rnd-us-vet1-v1" 
    return 1 
 fi 
 
@@ -29,7 +20,7 @@ fi
 
 DIR=$(pwd) 
 DATAFILE="$DIR/$1" 
-if [ ! -d "$DIR/environments" ]; then 
+if [ ! -d "$DIR/configurations" ]; then 
     echo "setenv: Must be run from the root directory of the terraform project." 
     return 1 
 fi 
@@ -108,9 +99,9 @@ fi
 cat << EOF > "$DIR/backend.tf" 
 terraform { 
 backend "s3" { 
+region = "${S3BUCKETREGION}" 
 bucket = "${S3BUCKET}" 
 key = "${S3FOLDERPROJECT}/${S3FOLDERNAME}/${S3TFSTATEFILE}" 
-region = "${S3BUCKETREGION}" 
   } 
 } 
 EOF
