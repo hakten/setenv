@@ -33,9 +33,9 @@ fi
 
 # Get env from DATAFILE 
 
-S3BUCKETREGION=$(sed -nr 's/^\s*s3_bucket_region\s*=\s*"([^"]*)".*$/\1/p' "$DATAFILE") 
-
 S3BUCKET=$(sed -nr 's/^\s*s3_bucket\s*=\s*"([^"]*)".*$/\1/p' "$DATAFILE") 
+
+S3FOLDERREGION=$(sed -nr 's/^\s*s3_folder_region\s*=\s*"([^"]*)".*$/\1/p' "$DATAFILE") 
 
 S3FOLDERPROJECT=$(sed -nr 's/^\s*s3_folder_project\s*=\s*"([^"]*)".*$/\1/p' "$DATAFILE")
 
@@ -44,7 +44,7 @@ S3FOLDERNAME=$(sed -nr 's/^\s*s3_folder_name\s*=\s*"([^"]*)".*$/\1/p' "$DATAFILE
 S3TFSTATEFILE=$(sed -nr 's/^\s*s3_tfstate_file\s*=\s*"([^"]*)".*$/\1/p' "$DATAFILE") 
 
 
-if [ -z "$S3BUCKETREGION" ] 
+if [ -z "$S3FOLDERREGION" ] 
 
 then 
 
@@ -99,7 +99,7 @@ fi
 cat << EOF > "$DIR/backend.tf" 
 terraform { 
 backend "s3" { 
-region = "${S3BUCKETREGION}" 
+region = "${S3FOLDERREGION}" 
 bucket = "${S3BUCKET}" 
 key = "${S3FOLDERPROJECT}/${S3FOLDERNAME}/${S3TFSTATEFILE}" 
   } 
